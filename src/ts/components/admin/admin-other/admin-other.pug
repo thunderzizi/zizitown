@@ -1,0 +1,26 @@
+.row
+	.col-6
+		.form
+			.form-group
+				h3 Notifications
+
+		.form
+			.form-group(*ngFor="let field of fields")
+				label {{field.title}}
+				textarea.form-control([(ngModel)]="field.value" rows="4" style="width: 400px;")
+			.form-group
+				button.btn.btn-primary(type="button" (click)="saveFields()") Save
+				button.btn.btn-default.ml-1(type="button" (click)="resetFields()") Reset
+
+.row
+	.col-12
+		.form
+			.form-group
+				label Suspicious pony info to report
+				textarea.form-control([(ngModel)]="suspiciousPonies" rows="15")
+			.form-group(*ngIf="suspiciousPoniesError")
+				.alert.alert-danger
+					| {{suspiciousPoniesError}}
+			.form-group
+				button.btn.btn-primary((click)="saveSuspiciousPonies()") Save
+				button.btn.btn-default.ml-1((click)="resetSuspiciousPonies()") Reset
